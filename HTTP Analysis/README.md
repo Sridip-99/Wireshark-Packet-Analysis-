@@ -43,7 +43,7 @@ Then we will find out the objects that we can save into our systems.
 Now we have successfully saved `download.html` into our systems.
 ![60d47dcf-e858-4ccf-ac05-5f07cba2eaf7](https://raw.githubusercontent.com/Sridip-99/Wireshark-Packet-Analysis-/refs/heads/main/HTTP%20Analysis/OBJECT%20OBTAINED%20BY%20HTTP%20GET%20METHIOD.png)
 
-Similarly we can save the advertisement also as `ADVERTISEMENT.html`, Now we can view the `download.html` and the `advertisement` file, analyze it for further use.
+Similarly we can save the advertisement also as `ADVERTISEMENT.html`, Now we can view the `download.html` and the `ADVERTISEMENT.html` file, analyze it for further use.
 #### Overview of download.html
 ![60d47dcf-e858-4ccf-ac05-5f07cba2eaf7](https://raw.githubusercontent.com/Sridip-99/Wireshark-Packet-Analysis-/refs/heads/main/HTTP%20Analysis/(DOWNLOAD.HTML)FILE%20OVERVIEW.png)
 
@@ -77,4 +77,4 @@ for that we have to move to the following order
 #### Overview of GeoIP locations
 ![Overview of GeoIP locations](https://raw.githubusercontent.com/Sridip-99/Wireshark-Packet-Analysis-/refs/heads/main/HTTP%20Analysis/GeoIP%20Location.png)
 
-If we have set Name resolution in our profile like **Resolve network (IP) addresses** then we can see the public IP name also & troubleshoot if there is any issue or not and deepdive into it. 
+If we have set **Name resolution** in our *profile* like **Resolve network (IP) addresses** from *preferences* then we can see the public IP name also & troubleshoot if there is any issue or not and deepdive into it. 
