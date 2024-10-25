@@ -4,6 +4,10 @@ This directory contains resources related to the analysis of **HTTP** traffic. I
 # TOOLS USED
 **Wireshark**, **MaxMind GeoIP**
 
+# DOWNLOAD LINKS
+* **Wireshark** : https://www.wireshark.org/download.html
+* **MaxMind GeoIP** : https://dev.maxmind.com/geoip/geolite2-free-geolocation-data/?lang=en
+
 # WORK
 We have to analyze captured packets in the `http.cap` using **Wireshark**. HTTP packets are available as `HTTP pac capture.csv` data.
 
@@ -78,3 +82,47 @@ for that we have to move to the following order
 ![Overview of GeoIP locations](https://raw.githubusercontent.com/Sridip-99/Wireshark-Packet-Analysis-/refs/heads/main/HTTP%20Analysis/GeoIP%20Location.png)
 
 If we have set **Name resolution** in our *profile* like **Resolve network (IP) addresses** from *preferences* then we can see the public IP name also & troubleshoot if there is any issue or not and deepdive into it. 
+
+# INSIGHTS AT A GLANCE
+
+After analyzing the `http.cap` file, here’s a summary of the main findings and insights:
+
+## Download File Analysis:
+
+* The `http.cap` file contained a captured HTTP request for `download.html` from www.ethereal.com.
+* The HTML file includes links to Ethereal (now Wireshark) downloads for different platforms, such as Windows, Solaris, and Linux distributions.
+
+## Ad Requests:
+* There was a GET request made to `pagead2.googlesyndication.com` with parameters pointing to a `Google AdSense ad banner (468x60_as format)`.
+This ad request includes user information and browser details, which Google could use for ad targeting.
+## HTTP Headers:
+*  **User-Agent:** `Mozilla/5.0 with Windows NT 5.1 (Windows XP)` and `Gecko engine (Firefox)`.
+* **Referer:** Requests to `download.html` page indicate browsing activity on www.ethereal.com.
+* **Content-Encoding:** The server responded with `gzip encoding` for faster data transfer.
+
+## JavaScript and Embedded Scripts:
+* The `download.html` page contained a JavaScript snippet for displaying ads, with a reference to Google Ads scripts hosted at `pagead2.googlesyndication.com.`
+* There were no other unusual scripts, but analyzing JavaScript files could be a potential area for further investigation, especially for tracking cookies or cross-site scripting risks.
+## Potential Missing P3P Policy:
+* No `p3p.xml` file or P3P privacy policy header was detected for www.ethereal.com. This suggests that www.ethereal.com at the time did not implement a P3P policy, which might affect how user data is protected and handled.
+* But  `p3p.xml` file or P3P privacy policy header was detected for www.googleadservices.com. This suggests that www.googleadservices.com at the time implementd a P3P policy, policyref="http://www.googleadservices.com/pagead/p3p.xml", 
+
+**CP="NOI DEV PSA PSD IVA PVD OTP OUR OTR IND OTC"**
+
+This compact policy (CP) code describes the types of data practices Google follows:
+
+* **NOI:** No identifiable information collected.
+* **DEV:** Information is used for research and development.
+* **PSA/PSD:** Information is used for pseudonymous analysis and decision-making.
+* **IVA/PVD:** Data is used for interactive and personalized ad displays.
+* **OTP:** Data may be used for "other purposes."
+* **OUR:** Data is shared only with Google’s affiliates.
+* **OTR:** Information may be retained or combined with other Google data.
+* **IND:** Information may be used to infer user preferences.
+* **OTC:** Information collected is typically user-tracked but used in aggregate.
+## Session Tracking:
+Based on the ad request, some tracking elements were observed (e.g., *random parameter* in the ad request URL), which might be used to avoid caching and serve dynamic ads.
+
+<br>
+
+###### * I HAVE TAKEN HELP FROM `ChatGPT` FOR MY LEARNING & FOR FILLING PURPOSE OF *(INSIGHTS AT A GLANCE)*
